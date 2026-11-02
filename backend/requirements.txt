@@ -1,0 +1,9 @@
+# Pinned versions so that every laptop builds an identical image.
+# Django 5.2 is an LTS release (supported until April 2028); move to 6.2 LTS in 2027.
+Django==5.2.18
+psycopg[binary]==3.3.6
+gunicorn==26.2.0
+cryptography==50.0.2
+google-api-python-client==2.201.0
+google-auth==2.62.0
+google-auth-oauthlib==1.5.0

@@ -1,0 +1,155 @@
+# Polish translation of the KROBO user interface and formal emails.
+# After changing source strings: python manage.py makemessages -l pl, then compilemessages.
+msgid ""
+msgstr ""
+"Project-Id-Version: KROBO 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-02 18:40+0100\n"
+"PO-Revision-Date: 2026-11-02 18:45+0100\n"
+"Last-Translator: KROBO\n"
+"Language-Team: Polish\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: config/settings.py:111
+msgid "Polish"
+msgstr "polski"
+
+#: config/settings.py:111
+msgid "English"
+msgstr "angielski"
+
+#: core/templates/core/home.html:31
+msgid "System is running."
+msgstr "System działa."
+
+#: core/templates/core/home.html:34
+msgid "Database"
+msgstr "Baza danych"
+
+#: core/templates/core/home.html:35
+msgid "working"
+msgstr "działa"
+
+#: core/templates/core/home.html:35
+msgid "error"
+msgstr "błąd"
+
+#: core/templates/core/home.html:36
+msgid "Connection"
+msgstr "Połączenie"
+
+#: core/templates/core/home.html:37
+msgid "unencrypted (local network)"
+msgstr "bez szyfrowania (sieć lokalna)"
+
+#: core/templates/core/home.html:38
+msgid "Server time"
+msgstr "Czas serwera"
+
+#: core/templates/core/home.html:40
+msgid "Version"
+msgstr "Wersja"
+
+#: mailer/apps.py:8
+msgid "Mail (Gmail API)"
+msgstr "Poczta (Gmail API)"
+
+#: mailer/management/commands/gmail_send_test.py:19
+#, python-format
+msgid "[KROBO] Delivery test, stage 0, %(time)s"
+msgstr "[KROBO] Test wysyłki, etap 0, %(time)s"
+
+#: mailer/management/commands/gmail_send_test.py:21
+#, python-format
+msgid ""
+"This is a test message from the KROBO system (stage 0).\n"
+"\n"
+"Sender: %(sender)s\n"
+"Recipient: %(recipient)s\n"
+"Sent at: %(time)s (Europe/Warsaw)\n"
+"\n"
+"This message confirms that the server sends mail through the Gmail API. No reply is needed.\n"
+msgstr ""
+"To jest wiadomość testowa systemu KROBO (etap 0).\n"
+"\n"
+"Nadawca: %(sender)s\n"
+"Odbiorca: %(recipient)s\n"
+"Czas wysłania: %(time)s (Europe/Warsaw)\n"
+"\n"
+"Wiadomość potwierdza, że serwer wysyła maile przez Gmail API. Nie wymaga odpowiedzi.\n"
+
+#: mailer/models.py:16
+msgid "Company (KROBO sp. z o.o.)"
+msgstr "Spółka (KROBO sp. z o.o.)"
+
+#: mailer/models.py:17
+msgid "Contractor (KROBO Karol Duda)"
+msgstr "Wykonawca (KROBO Karol Duda)"
+
+#: mailer/models.py:20
+msgid "role"
+msgstr "rola"
+
+#: mailer/models.py:21
+msgid "address"
+msgstr "adres"
+
+#: mailer/models.py:22
+msgid "encrypted token"
+msgstr "zaszyfrowany token"
+
+#: mailer/models.py:23
+msgid "authorized at"
+msgstr "data autoryzacji"
+
+#: mailer/models.py:24
+msgid "updated at"
+msgstr "data aktualizacji"
+
+#: mailer/models.py:27
+msgid "Gmail account"
+msgstr "konto Gmail"
+
+#: mailer/models.py:28
+msgid "Gmail accounts"
+msgstr "konta Gmail"
+
+#: mailer/models.py:39
+msgid "account"
+msgstr "konto"
+
+#: mailer/models.py:41
+msgid "recipient"
+msgstr "odbiorca"
+
+#: mailer/models.py:42
+msgid "subject"
+msgstr "temat"
+
+#: mailer/models.py:43
+msgid "Gmail message ID"
+msgstr "identyfikator wiadomości Gmail"
+
+#: mailer/models.py:44
+msgid "Gmail thread ID"
+msgstr "identyfikator wątku Gmail"
+
+#: mailer/models.py:45
+msgid "Message-ID header"
+msgstr "nagłówek Message-ID"
+
+#: mailer/models.py:46
+msgid "sent at"
+msgstr "data wysłania"
+
+#: mailer/models.py:50
+msgid "sent email"
+msgstr "wysłany e-mail"
+
+#: mailer/models.py:51
+msgid "sent emails"
+msgstr "wysłane e-maile"

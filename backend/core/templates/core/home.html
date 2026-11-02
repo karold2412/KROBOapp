@@ -1,0 +1,54 @@
+{% load i18n %}{% get_current_language as LANGUAGE_CODE %}<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KROBO</title>
+  <style>
+    :root { --bg: #f6f5f1; --card: #ffffff; --ink: #1d1d1b; --muted: #5f5e58; --ok: #2e7d32; --bad: #c62828; --line: #dcdad2; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #161614; --card: #22221f; --ink: #f1f0ea; --muted: #a8a69d; --ok: #66bb6a; --bad: #ef5350; --line: #3a3934; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, sans-serif; }
+    main { max-width: 480px; margin: 0 auto; padding: 32px 16px; }
+    h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: 0.02em; }
+    .lead { color: var(--muted); margin: 0 0 24px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+    dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 0; }
+    dt { color: var(--muted); }
+    dd { margin: 0; font-weight: 600; }
+    .ok { color: var(--ok); }
+    .bad { color: var(--bad); }
+    form { margin-top: 24px; display: flex; gap: 8px; }
+    button { font: inherit; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+    button[aria-pressed="true"] { border-color: var(--ink); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>KROBO</h1>
+    <p class="lead">{% translate "System is running." %}</p>
+    <div class="card">
+      <dl>
+        <dt>{% translate "Database" %}</dt>
+        <dd class="{% if database_ok %}ok{% else %}bad{% endif %}">{% if database_ok %}{% translate "working" %}{% else %}{% translate "error" %}{% endif %}</dd>
+        <dt>{% translate "Connection" %}</dt>
+        <dd class="{% if is_secure %}ok{% else %}bad{% endif %}">{% if is_secure %}HTTPS{% else %}{% translate "unencrypted (local network)" %}{% endif %}</dd>
+        <dt>{% translate "Server time" %}</dt>
+        <dd>{{ server_time|date:"Y-m-d H:i:s" }}</dd>
+        <dt>{% translate "Version" %}</dt>
+        <dd>{{ version }}</dd>
+      </dl>
+    </div>
+    <form action="{% url 'set_language' %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="/">
+      {% get_available_languages as languages %}
+      {% for code, name in languages %}
+        <button type="submit" name="language" value="{{ code }}" aria-pressed="{% if code == LANGUAGE_CODE %}true{% else %}false{% endif %}">{{ code|upper }}</button>
+      {% endfor %}
+    </form>
+  </main>
+</body>
+</html>

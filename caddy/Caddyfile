@@ -1,0 +1,28 @@
+{
+	admin off
+	# X-Forwarded-* headers are accepted only from private networks (cloudflared on the
+	# Docker network). This lets Django know that a request arrived over HTTPS.
+	servers {
+		trusted_proxies static private_ranges
+	}
+}
+
+:80 {
+	encode zstd gzip
+
+	header {
+		-Server
+		X-Content-Type-Options nosniff
+		Referrer-Policy same-origin
+	}
+
+	handle /static/* {
+		root * {$STATIC_PARENT:/srv}
+		file_server
+		header Cache-Control "public, max-age=3600"
+	}
+
+	handle {
+		reverse_proxy {$UPSTREAM:web:8000}
+	}
+}
